@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Users, ArrowRight } from 'lucide-react';
 
-// 2 personas only — no backend call needed
+// Hardcoded 2 personas — no API call needed, loads instantly
+// and avoids any localhost dependency
 const TWO_PERSONAS = [
   {
     id: 'friendly',
@@ -42,10 +43,7 @@ const PersonaSelector = ({ onPersonaSelect }) => {
         </p>
       </div>
 
-      <div
-        className="persona-grid"
-        style={{ gridTemplateColumns: 'repeat(2, 1fr)', maxWidth: '700px', margin: '0 auto' }}
-      >
+      <div className="persona-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', maxWidth: '700px', margin: '0 auto' }}>
         {TWO_PERSONAS.map((persona) => (
           <div
             key={persona.id}

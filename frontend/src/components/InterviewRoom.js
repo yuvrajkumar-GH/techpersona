@@ -267,7 +267,7 @@ const InterviewRoom = ({ persona, onEndInterview }) => {
   // ─────────────────────────────────────────
   const startInterview = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/session/start', {
+      const response = await axios.post('https://techpersona.onrender.com/api/session/start', {
         persona: persona, categories: ['technical', 'behavioral']
       });
       setSessionId(response.data.sessionId);
@@ -311,7 +311,7 @@ const InterviewRoom = ({ persona, onEndInterview }) => {
           ? pausesToUse.reduce((sum, p) => sum + p.duration, 0) / pausesToUse.length / 1000 : 0
       };
 
-      const response = await axios.post('http://localhost:5000/api/session/answer', {
+      const response = await axios.post('https://techpersona.onrender.com/api/session/answer', {
         sessionId, answer: userMessage, behaviorData
       });
       
@@ -338,7 +338,7 @@ const InterviewRoom = ({ persona, onEndInterview }) => {
     const confirmed = window.confirm('Are you sure you want to end the interview?');
     if (!confirmed) return;
     try {
-      const response = await axios.post('http://localhost:5000/api/session/end', { sessionId });
+      const response = await axios.post('https://techpersona.onrender.com/api/session/end', { sessionId });
       onEndInterview(response.data);
     } catch (error) {
       console.error('Error ending interview:', error);

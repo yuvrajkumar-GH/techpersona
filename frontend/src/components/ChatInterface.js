@@ -107,8 +107,12 @@ const ChatInterface = ({
     });
   };
 
-  const personaColor = persona ? getPersonaColor(persona.name) : '#6b7280';
-  const personaAvatar = persona ? getPersonaAvatar(persona.name) : '🤖';
+  // persona can be a string ID like "friendly" or an object with .name
+  const personaName = persona
+    ? (typeof persona === 'string' ? persona : persona.name)
+    : null;
+  const personaColor = personaName ? getPersonaColor(personaName) : '#6b7280';
+  const personaAvatar = personaName ? getPersonaAvatar(personaName) : '🤖';
 
   return (
     <div style={styles.container}>
@@ -118,7 +122,7 @@ const ChatInterface = ({
           <div style={styles.avatarLarge}>{personaAvatar}</div>
           <div style={styles.headerInfo}>
             <div style={styles.personaName}>
-              {persona?.name || 'AI Interviewer'}
+              {personaName || 'AI Interviewer'}
             </div>
             <div style={styles.status}>
               <div style={styles.statusDot} />

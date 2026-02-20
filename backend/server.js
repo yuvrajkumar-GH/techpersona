@@ -11,7 +11,14 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://techpersona.vercel.app',
+    /\.vercel\.app$/  // allow any vercel preview URLs too
+  ],
+  credentials: true
+}));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(express.json());
 
