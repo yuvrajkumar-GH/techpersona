@@ -1,6 +1,6 @@
 // ChatInterface.js - Add to frontend/src/components/
 import React, { useRef, useEffect, useState } from 'react';
-import { Send, Mic, MicOff, Loader } from 'lucide-react';
+import { Send, Mic, MicOff } from 'lucide-react';
 
 const ChatInterface = ({ 
   messages, 
